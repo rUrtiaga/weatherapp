@@ -35,5 +35,7 @@ jobs:
     - run: gem install cocoapods
     - name: Build iOS app for Detox
       run: npx detox build --configuration ios.sim.debug
+    - name: Install applesimutils
+      run: brew install wix/brew/applesimutils
     - name: Run e2e tests
       run: npm run test:e2e
