@@ -29,7 +29,6 @@ This project follows Clean Architecture principles, organized into three main la
 - **Presentation Layer** (`src/presentation/`): UI components and state management
   - `components/`: Reusable UI components
   - `store/`: Zustand state management
-  - `screens/`: Screen components
 
 ## Technologies Used
 
@@ -40,6 +39,7 @@ This project follows Clean Architecture principles, organized into three main la
 - **Zustand**: Lightweight state management
 - **React Navigation**: Navigation library
 - **Jest**: Testing framework
+- **Detox**: End-to-end testing framework
 - **ESLint**: Code linting
 
 ## API Services
@@ -143,16 +143,32 @@ npm test -- --coverage
 
 ### Test Structure
 
-The project includes unit tests for the domain layer:
+The project includes comprehensive unit tests:
+- `apiKeys.test.ts`: Tests API key configuration
+- `WeatherRepository.test.ts`: Tests data repository layer
 - `GetWeatherUseCase.test.ts`: Tests the weather fetching use case, including success scenarios and error handling for invalid inputs
 
-Tests are located in `src/__tests__/` following the same directory structure as the source code.
+Unit tests are located in `src/__tests__/` following the same directory structure as the source code.
+
+### End-to-End Testing
+
+The project uses Detox for end-to-end testing to ensure the app works correctly on real devices or simulators.
+
+Run e2e tests:
+
+```bash
+npx detox build
+npx detox test
+```
 
 ## Project Structure
 
 ```
 weather_app/
-├── app/                    # Expo Router screens
+├── .detoxrc.js            # Detox configuration
+├── .env.example           # Environment variables template
+├── e2e/                   # End-to-end tests
+├── app/                   # Expo Router screens
 ├── src/
 │   ├── config/            # Configuration files
 │   ├── data/              # Data layer
@@ -170,6 +186,8 @@ weather_app/
 │   └── __tests__/         # Test files
 ├── assets/                # Static assets
 ├── jest.config.js         # Jest configuration
+├── jest.config.unit.js    # Unit test configuration
+├── jest.setup.js          # Jest setup
 ├── metro.config.js        # Metro bundler config
 ├── package.json           # Dependencies and scripts
 └── tsconfig.json          # TypeScript configuration
