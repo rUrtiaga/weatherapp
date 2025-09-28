@@ -5,6 +5,9 @@ export class GetWeatherUseCase {
   constructor(private repository: IWeatherRepository) {}
 
   async execute(location: string): Promise<WeatherData> {
+    if (location == null || typeof location !== 'string') {
+      throw new Error('Location is required');
+    }
     location = location.trim();
     if (!location) {
       throw new Error('Location is required');
