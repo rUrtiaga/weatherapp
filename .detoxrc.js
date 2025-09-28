@@ -26,7 +26,7 @@ module.exports = {
     'ios.debug': {
       type: 'ios.app',
       binaryPath: 'ios/build/Build/Products/Debug-iphonesimulator/weatherapp.app',
-      build: 'npx expo prebuild --platform ios && cd ios && pod install && cd .. && xcodebuild -project ios/weatherapp.xcodeproj -scheme weatherapp -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build'
+      build: 'npx expo prebuild --platform ios --clean && cd ios && pod install && cd .. && xcodebuild -project ios/weatherapp.xcodeproj -scheme weatherapp -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build'
     }
   },
   devices: {

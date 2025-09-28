@@ -26,6 +26,8 @@ jobs:
         node-version: '20'
         cache: 'npm'
     - run: npm ci
+    - name: Fix Expo dependencies
+      run: npx expo install --fix
     - name: Setup Ruby
       uses: ruby/setup-ruby@v1
       with:
