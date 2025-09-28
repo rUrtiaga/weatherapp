@@ -12,7 +12,26 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '18'
+        node-version: '20'
         cache: 'npm'
     - run: npm ci
     - run: npm test
+  e2e:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+    - run: npm ci
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.0'
+    - run: gem install cocoapods
+    - name: Build iOS app for Detox
+      run: npx detox build --configuration ios.sim.debug
+    - name: Run e2e tests
+      run: npm run test:e2e
