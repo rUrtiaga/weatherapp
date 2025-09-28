@@ -19,7 +19,11 @@ export default function Index() {
   } = useWeatherStore();
 
   return (
-    <ScrollView style={{ flex: 1, padding: 20, backgroundColor: currentTheme.colors.background }}>
+    <ScrollView
+      style={{ flex: 1, padding: 20, backgroundColor: currentTheme.colors.background }}
+      keyboardShouldPersistTaps="handled"
+      contentContainerStyle={{ flexGrow: 1 }}
+    >
       <ServiceToggle selectedService={selectedService} onServiceChange={setService} theme={currentTheme} />
       <LocationInput
         location={location}

@@ -17,12 +17,13 @@ export const LocationInput: React.FC<LocationInputProps> = ({
   return (
     <View>
       <TextInput
+        testID="location-input"
         placeholder="Enter location"
         value={location || ''}
         onChangeText={onLocationChange}
         style={{ borderWidth: 1, padding: 10, marginBottom: 10 }}
       />
-      <Button title={loading ? 'Loading...' : 'Get Weather'} onPress={onSubmit} disabled={loading} />
+      <Button testID="get-weather-button" title={loading ? 'Loading...' : 'Get Weather'} onPress={onSubmit} disabled={loading} />
     </View>
   );
 };

@@ -18,11 +18,13 @@ export const ServiceToggle: React.FC<ServiceToggleProps> = ({
   return (
     <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
       <Button
+        testID="service-a-button"
         title="Service A"
         onPress={() => onServiceChange('serviceA')}
         color={selectedService === 'serviceA' ? theme.colors.primary : theme.colors.secondary}
       />
       <Button
+        testID="service-b-button"
         title="Service B"
         onPress={() => onServiceChange('serviceB')}
         color={selectedService === 'serviceB' ? theme.colors.primary : theme.colors.secondary}

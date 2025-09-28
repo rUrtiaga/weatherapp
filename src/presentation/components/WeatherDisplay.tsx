@@ -21,12 +21,12 @@ export const WeatherDisplay: React.FC<WeatherDisplayProps> = ({
     return <Text style={{ color: theme.colors.text }}>No weather data</Text>;
   }
   return (
-    <View>
-      <Text style={{ color: theme.colors.text }}>{weatherData.location}</Text>
+    <View testID="weather-display" accessible={true}>
+      <Text testID="weather-location" style={{ color: theme.colors.text }}>{weatherData.location}</Text>
       <View style={{ backgroundColor: theme.colors.secondary }}>
         <Image source={{ uri: weatherData.icon }} style={{ width: 50, height: 50 }} />
       </View>
-      <Text style={{ color: theme.colors.text }}>{weatherData.temperature}°C</Text>
+      <Text testID="weather-temperature" style={{ color: theme.colors.text }}>{weatherData.temperature}°C</Text>
       <Text style={{ color: theme.colors.text }}>{weatherData.description}</Text>
       <Text style={{ color: theme.colors.text }}>Humidity: {weatherData.humidity}%</Text>
       <Text style={{ color: theme.colors.text }}>Wind: {weatherData.windSpeed} m/s</Text>
