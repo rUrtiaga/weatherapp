@@ -37,5 +37,7 @@ jobs:
       run: npx detox build --configuration ios.sim.debug
     - name: Install applesimutils
       run: brew install wix/brew/applesimutils
+    - name: Start Metro server
+      run: npm start &
     - name: Run e2e tests
-      run: npm run test:e2e
+      run: npx detox test --configuration ios.sim.debug --headless --record-videos failing --take-screenshots failing
